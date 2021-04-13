@@ -9,9 +9,10 @@ if __name__ == "__main__":
 
     '''
     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
+    access_token = os.environ['MY_GITHUB_TOKEN']
     '''
 
-    access_token = "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"
+    access_token = os.environ['MY_GITHUB_TOKEN']
     repository_name = "git-action-python"
 
     seoul_timezone = timezone('Asia/Seoul')
