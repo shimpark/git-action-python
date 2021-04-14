@@ -35,7 +35,7 @@ def extract_interpark_book_data(soup):
         price = new_book.select("div.infoWrap")[0].select(
             "p.inc_price")[0].select("span:nth-child(3)")[0].select("b")[0].text
 
-        content = f"<a href={url}>" + book_name + \
+        content = f"<a href='{url}>'" + book_name + \
             "</a>" + ", " + price + "<br/>\n"
         upload_contents += content
 
