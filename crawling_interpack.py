@@ -28,7 +28,7 @@ def extract_interpark_book_data(soup):
 
     for new_book in new_books:
         book_name = new_book.select("div.infoWrap")[0].select(
-            "p.inc_tit")[0].select("b")[0].text
+            "p.inc_tit")[0].select("a")[0].select("b")[0].text
         url_suffix = new_book.select("div.infoWrap")[0].select(
             "p.inc_tit")[0].select("a")[0].attrs['href']
         url = url_suffix
