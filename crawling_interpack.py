@@ -25,14 +25,13 @@ def extract_interpark_book_data(soup):
 
     upload_contents = ''
     new_books = soup.select(".displayWrap")
-    url_prefix = "http://book.interpark.com"
 
     for new_book in new_books:
         book_name = new_book.select("div.infoWrap")[0].select(
             "p.inc_tit")[0].select("b")[0].text
         url_suffix = new_book.select("div.infoWrap")[0].select(
             "p.inc_tit")[0].select("a")[0].attrs['href']
-        url = url_prefix + url_suffix
+        url = url_suffix
         price = new_book.select("div.infoWrap")[0].select(
             "p.inc_price")[0].select("span:nth-child(3)")[0].select("b")[0].text
 
