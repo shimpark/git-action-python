@@ -12,12 +12,17 @@ def get_request_query(url, operation, params, serviceKey):
     import urllib.parse as urlparse
     params = urlparse.urlencode(params)
     request_query = url + '/' + operation + '?' + params + '&' + 'serviceKey' + '=' + serviceKey
+    #print(request_query)
     return request_query
 
-year = 2022
+year = 2024
 
 #일반 인증키(Encoding)
-mykey = "WoMViKPOmQYKGqkJaAbyqMhjuTY0J%2B96EcUc5jWYLT76LbHMB3jma8vfyavnYsfFyi1sybZyivHy7Mt3qNQEfQ%3D%3D"
+mykey = "RvVVDWYFt6W133cIk%2F8zdkX1Ppk23aCQvr%2B0RpAZk2hIQjaJzewdFOoY6xRr6mvJGlj%2BG19We6Fwmv5JwGwIlA%3D%3D"
+url = 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService'
+
+#공휴일 정보 조회
+operation = 'getRestDeInfo'
 
 for month in range(1,13):
 
@@ -26,19 +31,17 @@ for month in range(1,13):
     else:
         month = str(month)
     
-    url = 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService'
-
-    #공휴일 정보 조회
-    operation = 'getRestDeInfo'
-    params = {'solYear':year, 'solMonth':month}
-
-    
+    params = {'solYear':year, 'solMonth':month}    
 
     request_query = get_request_query(url, operation, params, mykey)
     get_data = requests.get(request_query)        
 
     if True == get_data.ok:
-        soup = BeautifulSoup(get_data.content, 'html.parser')        
+
+        #print(year, month);
+
+        #soup = BeautifulSoup(get_data.content, 'html.parser')        
+        soup = BeautifulSoup(get_data.content, 'lxml-xml')
         #print(soup);
         item = soup.findAll('item')
         
@@ -46,6 +49,7 @@ for month in range(1,13):
             
             day = int(i.locdate.string[-2:])
             weekname = print_whichday(int(year), int(month), day)
-            print(i.datename.string, i.isholiday.string, i.locdate.string, weekname)                
+            print(i.dateName.string, i.isHoliday.string, i.locdate.string, weekname)                
+            #print(i.dateName.string, i.isHoliday.string, i.locdate.string)                
 
 
