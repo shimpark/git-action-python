@@ -29,16 +29,18 @@ def getHoliday(year: int) -> pd.DataFrame:
     xml = BeautifulSoup(response.text, "lxml-xml")
     items = xml.find('items')
     item_list = []
-    for item in items:
-        item_dict = {
-            "이름": item.find("dateName").text.strip(),
-            "날짜": datetime.strptime(item.find("locdate").text.strip(), '%Y%m%d'),
-            "요일": print_whichday(item.find("locdate").text.strip())
-        }
-        item_list.append(item_dict)
+
+    if items is not None:  # items가 None이 아닌 경우에만 반복문 실행
+        for item in items:
+            item_dict = {
+                "이름": item.find("dateName").text.strip(),
+                "날짜": datetime.strptime(item.find("locdate").text.strip(), '%Y%m%d'),
+                "요일": print_whichday(item.find("locdate").text.strip())
+            }
+            item_list.append(item_dict)
 
     return pd.DataFrame(item_list)
 
 if __name__ == "__main__":
-    holiday_df = getHoliday(2024)
+    holiday_df = getHoliday(2025)
     print(holiday_df)
