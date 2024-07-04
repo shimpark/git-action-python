@@ -7,4 +7,4 @@ pip install lxml
 pip install pandas    
 
 
-jira 연동
+# 이게 뭐지?
