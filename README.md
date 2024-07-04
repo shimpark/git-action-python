@@ -6,10 +6,7 @@ pip install requests
 pip install lxml
 pip install pandas   
 
-# github.com-univ_luckshim 도 추가해 보자.
-
-git config --global user.email "luckshim@univ.me"
-git config user.email "luckshim@univ.me"
+================
 
 # Account 2 (shimpark) 두번째 계정
 Host github.com-shimpark
@@ -22,3 +19,10 @@ Host github.com-univ_luckshim
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_rsa_github_univ_luckshim
+
+# github.com-univ_luckshim 도 추가해 보자.
+
+git config --global user.email "luckshim@univ.me"
+git config user.email "luckshim@univ.me"    
+
+================
