@@ -6,8 +6,7 @@ pip install requests
 pip install lxml
 pip install pandas    
 
-
-# 이게 뭐지?
+# 나는 deveop-branch 이다. commit 1
 
 # github.com-univ_luckshim 도 추가해 보자.
 
@@ -26,3 +25,5 @@ Host github.com-univ_luckshim
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_rsa_github_univ_luckshim
+
+# 나는 deveop-branch 이다. commit 2
