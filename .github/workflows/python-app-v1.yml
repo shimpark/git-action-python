@@ -26,18 +26,21 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@latest
         with:
-          chrome-version: 'latest'
-          install-dependencies: true  # Chrome 설치 시 필요한 의존성 설치
+          chrome-version: stable
 
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v1
         with:
-          chrome-version: 'latest'  # Chrome의 최신 버전에 맞는 ChromeDriver 설치
+          chromedriver-version: 114.0.5735.90  # Chrome 버전에 맞는 ChromeDriver 버전 지정
 
       - name: Run main.py
         run: |
+          export CHROME_BIN=/usr/bin/google-chrome
+          export DISPLAY=:99
+          chromedriver --version
+          google-chrome --version
           python main.py
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
