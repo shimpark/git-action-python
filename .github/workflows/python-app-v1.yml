@@ -25,11 +25,17 @@ jobs:
           python -m pip install --upgrade pip        
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Setup ChromeDriver
-        uses: browser-actions/setup-chromedriver@v1
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
         with:
-          # 'stable'을 사용하여 Chrome의 최신 안정 버전을 설치
+          # 설치할 Chrome 버전을 'stable'로 설정
           version: 'stable'
+
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+          # ChromeDriver의 최신 안정 버전 설치
+          chromedriver-version: 'latest'
 
       - name: Run main.py
         run: |
