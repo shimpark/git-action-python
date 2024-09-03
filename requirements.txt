@@ -1,5 +1,5 @@
 selenium==4.10.0
-beautifulsoup4==4.7.1
-requests==2.22.0
-PyGithub==1.51
-pytz==2019.1
+beautifulsoup4==4.12.2  # 최신 버전 사용
+requests==2.31.0        # 최신 버전 사용
+PyGithub==1.58.1        # 최신 버전 사용
+pytz==2023.3            # 최신 버전 사용
