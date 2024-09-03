@@ -23,7 +23,7 @@ jobs:
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v1
         with:
-          chromedriver-version: latest  # You can specify a specific version if needed
+          chromedriver-version: '114.0.5735.90'  # 크롬 버전에 맞는 특정 드라이버 버전을 지정합니다.
           
       - name: Install dependencies
         run: |
