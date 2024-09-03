@@ -28,14 +28,13 @@ jobs:
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          # 설치할 Chrome 버전을 'stable'로 설정
           version: 'stable'
 
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v1
         with:
-          # ChromeDriver의 최신 안정 버전 설치
-          chromedriver-version: 'latest'
+          # ChromeDriver 버전을 Chrome의 버전에 맞춰 지정합니다.
+          chromedriver-version: '116.0.5845.96'  # 올바른 버전으로 교체 필요
 
       - name: Run main.py
         run: |
