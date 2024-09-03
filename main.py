@@ -31,7 +31,10 @@ if __name__ == "__main__":
     soup_interpark = parsing_interpark_beautifulsoup(
         interpark_it_new_product_url)
     issue_interpark_title = f"인터파크 IT 신간 도서 알림({today_data})"
-    upload_interpark_contents = extract_interpark_book_data(soup_interpark)
+    upload_interpark_contents = extract_interpark_book_data(soup_interpark, 'https://book.interpark.com')
+
+    print(upload_interpark_contents)
+
 
     access_token = os.environ['MY_GITHUB_TOKEN']
     repository_name = "git-action-python"
