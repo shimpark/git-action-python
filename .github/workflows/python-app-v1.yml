@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *" # 매일 자정에 실행
 
 jobs:
   build:
@@ -14,24 +14,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-          
-      - name: Set up ChromeDriver
-        uses: nanasess/setup-chromedriver@v1
-        with:
-          chromedriver-version: '114.0.5735.90'  # 크롬 버전에 맞는 특정 드라이버 버전을 지정합니다.
-          
+
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip        
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1 # Chrome 설치
+        with:
+          chrome-version: "latest"
+
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v1 # ChromeDriver 설치
+        with:
+          chromedriver-version: "latest" # Chrome과 호환되는 최신 버전
+
       - name: Run main.py
-        run: |
-          python main.py
+        run: python main.py
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
