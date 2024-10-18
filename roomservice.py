@@ -39,8 +39,7 @@ def check_tean_room_availability():
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        messages = []  # 메시지를 저장할 리스트
-        messages.append("서초_태안휴게소 토요일")
+        messages = []  # 메시지를 저장할 리스트        
         
         # 각 방이 포함된 td를 찾아서 처리
         tds = soup.find_all('td', class_='sat')  # 토요일 기준으로 필터링
@@ -64,6 +63,7 @@ def check_tean_room_availability():
         if messages:
             # 리스트의 메시지를 엔터로 구분하여 하나의 문자열로 묶음
             full_message = "\n".join(messages)
+            send_telegram_message("서초_태안휴게소 토요일")
             send_telegram_message(full_message)
             # upload_github_issue(repo, "서초_태안휴게소 토요일", full_message)
     else:
@@ -77,7 +77,6 @@ def check_hongsung_room_availability():
         soup = BeautifulSoup(response.content, 'html.parser')
 
         messages = []  # 메시지를 저장할 리스트
-        messages.append("서초_홍성휴게소 토요일")
         
         # 각 방이 포함된 td를 찾아서 처리
         tds = soup.find_all('td', class_='sat')  # 토요일 기준으로 필터링
@@ -101,6 +100,7 @@ def check_hongsung_room_availability():
         if messages:
             # 리스트의 메시지를 엔터로 구분하여 하나의 문자열로 묶음
             full_message = "\n".join(messages)
+            send_telegram_message("서초_홍성휴게소 토요일")
             send_telegram_message(full_message)
             # upload_github_issue(repo, "서초_홍성휴게소 토요일", full_message)
     else:
