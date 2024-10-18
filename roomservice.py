@@ -65,7 +65,7 @@ def check_tean_room_availability():
             # 리스트의 메시지를 엔터로 구분하여 하나의 문자열로 묶음
             full_message = "\n".join(messages)
             send_telegram_message(full_message)
-            upload_github_issue(repo, "서초_태안휴게소 토요일", full_message)
+            # upload_github_issue(repo, "서초_태안휴게소 토요일", full_message)
     else:
         print(f"Failed to fetch data from {tean_url}. Status code: {response.status_code}")
 
@@ -102,7 +102,7 @@ def check_hongsung_room_availability():
             # 리스트의 메시지를 엔터로 구분하여 하나의 문자열로 묶음
             full_message = "\n".join(messages)
             send_telegram_message(full_message)
-            upload_github_issue(repo, "서초_홍성휴게소 토요일", full_message)
+            # upload_github_issue(repo, "서초_홍성휴게소 토요일", full_message)
     else:
         print(f"Failed to fetch data from {tean_url}. Status code: {response.status_code}")        
 
