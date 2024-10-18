@@ -3,12 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 from github_utils import get_github_repo, upload_github_issue
 
-# https://api.telegram.org/bot7988888469:AAGNW6wDKFQ_rj4HBPY91HtAR37sVnZWs8o/getUpdates
-# Telegram Bot 설정 secrets.TELEGRAM_TOKEN
-
-# TELEGRAM_TOKEN = '7988888469:AAGNW6wDKFQ_rj4HBPY91HtAR37sVnZWs8o'
-# CHAT_ID = '1762607592'  # 직접 얻은 채팅 ID secrets.TELEGRAM_CHAT_ID
-
 TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
 CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 
@@ -17,8 +11,8 @@ repository_name = "git-action-python"
 
 repo = get_github_repo(access_token, repository_name)
 
-upload_github_issue(repo, "TELEGRAM_TOKEN", TELEGRAM_TOKEN)
-upload_github_issue(repo, "CHAT_ID", CHAT_ID)
+# upload_github_issue(repo, "TELEGRAM_TOKEN", TELEGRAM_TOKEN)
+# upload_github_issue(repo, "CHAT_ID", CHAT_ID)
 
 print("Upload Github Issue Success!")
 
