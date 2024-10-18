@@ -47,7 +47,7 @@ def check_room_availability():
                     room_type = link.text.strip()
                     if '4인실(온돌)' in room_type or '4인실(침대)' in room_type:
                         availability = int(room_type.split('(')[-1].split(')')[0])  # 예약 가능 수 파싱
-                        if availability > 0:
+                        if availability >= 0:
                             # 메시지 형식: "26일 - 4인실(온돌) - (2)"
                             message = f"{date}일 - {room_type.split('(')[0]} - ({availability})"
                             messages.append(message)  # 메시지를 리스트에 추가
