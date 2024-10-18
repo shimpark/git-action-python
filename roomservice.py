@@ -1,13 +1,26 @@
 import os
 import requests
 from bs4 import BeautifulSoup
+from github_utils import get_github_repo, upload_github_issue
 
-
-
-
+# https://api.telegram.org/bot7988888469:AAGNW6wDKFQ_rj4HBPY91HtAR37sVnZWs8o/getUpdates
 # Telegram Bot 설정 secrets.TELEGRAM_TOKEN
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+
+# TELEGRAM_TOKEN = '7988888469:AAGNW6wDKFQ_rj4HBPY91HtAR37sVnZWs8o'
+# CHAT_ID = '1762607592'  # 직접 얻은 채팅 ID secrets.TELEGRAM_CHAT_ID
+
+TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
+CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
+
+access_token = os.environ['MY_GITHUB_TOKEN']
+repository_name = "git-action-python"
+
+repo = get_github_repo(access_token, repository_name)
+
+upload_github_issue(repo, "TELEGRAM_TOKEN", TELEGRAM_TOKEN)
+upload_github_issue(repo, "CHAT_ID", CHAT_ID)
+
+print("Upload Github Issue Success!")
 
 # 크롤링할 URL
 url = 'https://www.seocho.go.kr/site/ta/ex/tean/TeanFCalendar.do'
@@ -56,6 +69,7 @@ def check_room_availability():
             # 리스트의 메시지를 엔터로 구분하여 하나의 문자열로 묶음
             full_message = "\n".join(messages)
             send_telegram_message(full_message)
+            upload_github_issue(repo, "서초휴게소 토요일", full_message)
     else:
         print(f"Failed to fetch data from {url}. Status code: {response.status_code}")
 
