@@ -57,7 +57,7 @@ def check_tean_room_availability():
                         availability = int(room_type.split('(')[-1].split(')')[0])  # 예약 가능 수 파싱
                         if availability > 0:
                             # 메시지 형식: "26일 - 4인실(온돌) - (2)"
-                            message = f"{date}일 - {room_type.split('(')[0]} - ({availability})"
+                            message = f"{date}일 - {room_type} - ({availability})"
                             messages.append(message)  # 메시지를 리스트에 추가
 
         if messages:
@@ -94,7 +94,7 @@ def check_hongsung_room_availability():
                         availability = int(room_type.split('(')[-1].split(')')[0])  # 예약 가능 수 파싱
                         if availability > 0:
                             # 메시지 형식: "26일 - 4인실(온돌) - (2)"
-                            message = f"{date}일 - {room_type.split('(')[0]} - ({availability})"
+                            message = f"{date}일 - {room_type} - ({availability})"
                             messages.append(message)  # 메시지를 리스트에 추가
 
         if messages:
