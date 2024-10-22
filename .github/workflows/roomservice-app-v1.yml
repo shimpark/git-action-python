@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 0 1 * *" # 매월1일작동 / 참고 : 매일마다 작동 (0 * * * *)
 
 jobs:
   build:
