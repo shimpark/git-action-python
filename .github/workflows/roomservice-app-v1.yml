@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 * * * *" # 매월1일작동(0 0 1 * *) / 참고 : 매일마다 작동 (0 * * * *)
+    - cron: "*/15 * * * *" # 매월1일작동(0 0 1 * *) / 참고 : 매일마다 작동 (0 * * * *)
 
 jobs:
   build:
@@ -46,3 +46,4 @@ jobs:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
